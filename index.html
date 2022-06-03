@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Email Signatures</title>
+
+<style type="text/css">
+	<style type='text/css'>
+	@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
+	table { font-family:'Open Sans',Helvetica,Arial,sans-serif; }
+	#centra{ 
+		margin: 0 auto;
+		width: 320px;
+		margin-top: 50px;
+	 }
+	 label{
+	 	display:block;
+	 	width: 320px;
+	 	text-align: left;
+	 	margin: 0 auto;
+	 	font-size: 11px;
+	 	font-family:'Open Sans',Helvetica,Arial,sans-serif;
+	 	color:#999999;
+	 }
+	 .text{
+	 	-webkit-appearance: none;
+  		 -moz-appearance:none;
+  		 appearance:none;
+  		 border:none;
+  		 border-bottom: 1px solid #CCCCCC;
+  		 padding: 5px 12px;
+  		 margin: 8px auto 16px;
+  		 width: 320px;
+  		 font-size: 14px;
+	 }
+	 .text:focus{
+	 	border-bottom: 1px solid #666666;
+	 	outline: none;
+	 }
+	 #signature{
+	 	margin: 20px 0px 20px 0px;
+	 	padding: 10px 20px 6px;
+	 	border:1px solid #dadddd;
+	 	border-radius: 10px;
+	 	width: 300px;
+		 background:#f6f9fc;
+	 }
+	 #btns{
+	 	display: flex;
+	 	justify-content: space-between;
+	 	width: 340px;
+	 	margin-top: 40px;
+	 }
+	 .boton{ 
+	 	-webkit-appearance: none;
+	 	width: calc(50% - 10px);
+	 	display: inline-block;
+	 	padding: 10px 0px;
+	 	border-radius: 4px; 
+	 	background-color: #f6f9fC;
+	 	border: 1px solid #dcf3f6;
+	 	transition: all 0.5s ease-out;
+	 	color: #666666;
+	 }
+	 .boton:hover{
+	 	background-color: #d6f9fc;
+	 	cursor: pointer;
+	 	color: #222222;
+	 } 
+</style>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.js" integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+<script>
+	function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).html()).select();
+    document.execCommand("copy");
+    $temp.remove();
+}
+function copyGmail(selector){
+  var $temp = $("<div>");
+  $("body").append($temp);
+  $temp.attr("contenteditable", true)
+       .html($(selector).html()).select()
+       .on("focus", function() { document.execCommand('selectAll',false,null); })
+       .focus();
+  document.execCommand("copy");
+  $temp.remove();
+}
+
+$( document ).ready(function() {
+	$('#name_form').change(function () {  $('#name').html( $('#name_form').val() )      } );
+	$('#title_form').change(function () {  $('#jobtitle').html( $('#title_form').val() )      } );
+	$('#logo_form').change(function () {  $('#logolink').attr("href", $('#logo_form').val())     } );
+	$('#logo_img_form').change(function () {  $('#logoimg').attr("src", $('#logo_img_form').val())     } );
+
+	
+});
+</script>
+
+</head>
+<body>
+<div id="centra">
+<div id="form">
+	<form action="/action_page.php">
+ 	<label>Name</label>
+ 	 <input type="text" name="name" id="name_form" class="text"><br><br>
+ 	 <label>Job Title</label>
+ 	 <input type="text" name="title" id="title_form" class="text" ><br><br>
+	  <label>Logo Redirect</label>
+ 	 <input type="url" name="title" id="logo_form" class="text" ><br><br>
+	  <label>Logo Link</label>
+ 	 <input type="url" name="title" id="logo_img_form" class="text" ><br><br>
+</form>
+</div>
+
+<div id="signature">
+	
+	<style type='text/css'>
+	@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
+	table { font-family:'Open Sans',Helvetica,Arial,sans-serif; }
+	</style>
+	<div style="display:inline-block;border-radius: 8px!important;">
+	<table id="sig" style="width:auto;font-family:'Open Sans',Helvetica,Arial,sans-serif;border-collapse:collapse;webkit-text-size-adjust:none;border-radius:8px !important;background:#ffffff !important;background-image: url('https://upload.wikimedia.org/wikipedia/en/4/48/Blank.JPG')!important;background-repeat:repeat;margin-left:8px" cellspacing="0" cellpadding="0">
+		<tbody style="border-radius: 8px!important;">
+		<tr>
+			<td colspan="7" style="font-size:8px;">&nbsp;</td></tr>
+		<tr>
+			<td width="16">&nbsp;</td>
+			<td width="80"><a id="logolink" style="border: none !important; text-decoration: none !important;" href="https://www.gsb.stanford.edu/"><img id="logoimg" style="border: none; margin-top: 4px;" src="https://www.gsb.stanford.edu/themes/custom/gsb/logo.svg" alt="GSB Logo" width="80"></a></td>
+			<td style="border-right: 1px solid #DCDDDE;" width="16">&nbsp;</td><td width="16">&nbsp;</td>
+			<td><span id="name" style="display: block; color: black opa; font-size: 12px; line-height: 16px; border: none !important; text-decoration: none !important;">Your name</span><span id="jobtitle" style="display: block; font-size: 9px; color: #afbcc6;">Job Title</span></td>
+			<td width="24">&nbsp;</td></tr>
+		<tr><td colspan="7" style="font-size:8px;">&nbsp;</td></tr>
+		</tbody>
+</table>
+</div>
+</div>
+
+<div id="btns">
+	<input class="boton" type="submit" value="Copy for Gmail" onclick="copyGmail('#signature')">
+	<input class="boton" type="submit" value="Copy HTML code" onclick="copyToClipboard('#signature')">
+</div>
+</div>
+</body>
+</html>
+
